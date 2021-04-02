@@ -1,0 +1,45 @@
+{
+    "name": "eleven59/backpack-image-traits",
+    "description": "Backpack for Laravel helper traits for processing image upload fields (including within repeatable fields)",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nik Linders",
+            "email": "info@eleven59.nl",
+            "homepage": "https://eleven59.nl"
+        }
+    ],
+    "homepage": "https://github.com/eleven59/backpack-image-traits",
+    "keywords": [
+        "Laravel", "Backpack", "Backpack for Laravel", "Backpack Addon", "BackpackImageTraits"
+    ],
+    "require": {
+        "illuminate/support": "~7|~8",
+        "intervention/image": "^2.5",
+        "backpack/crud": "^4.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eleven59\\BackpackImageTraits\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Eleven59\\BackpackImageTraits\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --testdox"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Eleven59\\BackpackImageTraits\\AddonServiceProvider"
+            ]
+        }
+    }
+}
