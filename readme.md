@@ -68,6 +68,8 @@ class Mage extends Model
 {
     use HasImageFields, HasImagesInRepeatableFields;
     
+    protected $casts = ['spells' => 'array']; // You should already have this
+    
     /** 
      * i.e. $this->spells is a CRUD field of the 'repeatable' type 
      * each child entity has one or more fields of the 'image' type
@@ -92,7 +94,7 @@ All available options are displayed below with their default values.
 public function setAvatarAttribute($value)
 {
     $this->attributes['avatar'] = $this->uploadImageData($value, [
-        'disk' => 'public', // Storage disk as defined in config/storage.php
+        'disk' => 'public', // Storage disk as defined in config/filesystems.php
         'delete_path' => null, // Path of old value; file will be deleted if specified (don't use for repeatable)
         'directory' => $this->table, // Directory in storage disk to use; defaults to model's table name
         'quality' => 65, // Intervention Image quality setting, default is 65
@@ -139,11 +141,11 @@ variable.
 public function setSecretPhotoAttribute($value)
 {
     $this->attributes['secret_photo'] = $this->uploadImageData($value, [
-        'disk' => 'private',
+        'disk' => 'local',
         'directory' => 'secret_photos',
         'callback' => function($filename) {
             // Return storage path instead of public url
-            return Storage::disk('private')->path('secret_photos/'.$filename);
+            return Storage::disk('local')->path('secret_photos/'.$filename);
         },
     ]);
 }
