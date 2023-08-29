@@ -37,7 +37,11 @@ trait HasImageFields
                 $transformations($image);
             }
 
-            $storage_path = Storage::disk($disk)->path($destination_path.'/'.$filename);
+            $storage_dir = Storage::disk($disk)->path($destination_path);
+            $storage_path = "{$storage_dir}/{$filename}";
+            if(!is_dir($storage_dir) && !file_exists($storage_dir))  {
+                        mkdir($storage_dir, 0755, true);
+            }
             $image->save($storage_path, $quality, $format);
 
             if(!empty($callback)) {
