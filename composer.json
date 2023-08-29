@@ -14,7 +14,7 @@
         "Laravel", "Backpack", "Backpack for Laravel", "Backpack Addon", "BackpackImageTraits"
     ],
     "require": {
-        "illuminate/support": "~7|~8",
+        "illuminate/support": "~7|~8|~9",
         "intervention/image": "^2.5",
         "backpack/crud": "^4.1.0|^5.0"
     },
